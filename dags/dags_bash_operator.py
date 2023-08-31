@@ -32,7 +32,7 @@ with DAG(
     
     bash_t2 = BashOperator(
         task_id="bash_t2",
-        bash_command="echo $hostname",
+        bash_command="echo $HOSTNAME",
     )
 
     # [END howto_operator_bash]
