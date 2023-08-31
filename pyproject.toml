@@ -12,6 +12,11 @@ apache-airflow = {extras = ["celery"], version = "^2.7.0"}
 python-dotenv = "^1.0.0"
 
 
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.5.1"
+black = "^23.7.0"
+pre-commit = "^3.3.3"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
