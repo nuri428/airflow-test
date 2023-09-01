@@ -19,15 +19,12 @@ with DAG(
     # dagrun_timeout=datetime.timedelta(minutes=60), timeout 
     tags=["example", "example2"],
     params={"example_key": "example_value"}, # task에 공통적으로 넘길 파라메터 
-) as dag:
-    run_this_last = EmptyOperator(
-        task_id="run_this_last",
-    )
+) as dag:    
 
     # [START howto_operator_bash]
     bash_t1 = BashOperator(
         task_id="bash_t1",
-        bash_command="echo whoami",
+        bash_command="echo $whoami",
     )
     
     bash_t2 = BashOperator(
@@ -35,5 +32,14 @@ with DAG(
         bash_command="echo $HOSTNAME",
     )
 
+    bash_t3 = BashOperator(
+        task_id="bash_t3",
+        env={
+            "START_DATE":"{{data_interval_start | ds}}",
+            "END_DATE":"{{data_interval_end | ds}}"
+        },
+        bash_command='echo $START_DATE && echo $END_DATE'
+    )
+
     # [END howto_operator_bash]
-    bash_t1 >> bash_t2
+    bash_t1 >> bash_t2 >> bash_t3
