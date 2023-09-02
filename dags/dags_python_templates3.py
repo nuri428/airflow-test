@@ -9,8 +9,6 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.decorators import task
 # catchup : 누락된 작업 내용을 한꺼번에 돌림.
-from sqlalchemy import text, create_engine
-import sqlalchemy
 
 with DAG(
     dag_id="dags_python_templates3",
@@ -23,6 +21,7 @@ with DAG(
 
     @task(task_id='pyton_t1')
     def python_function1():
+        import sqlalchemy
         print(sqlalchemy.__version__)
         return ''
 
