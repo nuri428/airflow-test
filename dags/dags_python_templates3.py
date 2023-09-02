@@ -22,7 +22,7 @@ with DAG(
 ) as dag:
 
     @task(task_id='pyton_t1')
-    def python_function1(**kwargs):
+    def python_function1():
         print(sqlalchemy.__version__)
         return ''
 
