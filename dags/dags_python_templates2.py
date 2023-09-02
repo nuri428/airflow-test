@@ -35,4 +35,4 @@ with DAG(
         print(f"hello {name}")
         return
 
-    python_function2()  >> python_function3()
+    python_function2()  >> python_function3('test')
