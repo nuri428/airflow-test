@@ -1,4 +1,4 @@
 # python ignore
 .venv
 .python-version
-
+.env
