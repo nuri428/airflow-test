@@ -8,7 +8,7 @@ import pendulum
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.decorators import task
-from common.common_func import regist2
+from common.common_func import regists2
 # catchup : 누락된 작업 내용을 한꺼번에 돌림.
 
 with DAG(
@@ -22,7 +22,7 @@ with DAG(
 
     regist_t1 = PythonOperator(
         task_id='regist_t1',
-        python_callable=regist2,
+        python_callable=regists2,
         op_args=['name', 'gender', 'et1c', 'etc2'],
         op_kwargs={'country':'korea','city':'', 'email':'test@email'}
     )
