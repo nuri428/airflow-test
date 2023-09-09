@@ -22,9 +22,9 @@ with DAG(
         fruit = ['APPLE', 'BANANA', 'ORANGE', 'AVOCARD']
         rand_int = random.randint(0,len(fruit)-1)
         print(fruit[rand_int])
-        
+
     py_t1 = PythonOperator(task_id='dags_python_operator',
                            python_callable=select_fruit
                            )
-    
+
     py_t1
